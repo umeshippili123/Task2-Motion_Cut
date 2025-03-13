@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Image Slider</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .slider-container {
+            width: 80%;
+            max-width: 800px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+        }
+        .slide img {
+            width: 100%;
+            display: block;
+        }
+        .nav-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .nav-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .slide img {
+            width: 100%;
+            height: 1000px; /* Adjust the height as needed */
+            object-fit: cover; /* Ensures images maintain aspect ratio and fill the container */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slides">
+            <div class="slide"><img src="C:\Users\haris\Downloads\2cbc8470-d54b-4c84-919f-7f458e656fca.jpg" alt="Image 1"></div>
+            <div class="slide"><img src="C:\Users\haris\Downloads\photorealistic-view-off-road-vehicle-with-nature-terrain-weather-conditions.jpg" alt="Image 2"></div>
+            <div class="slide"><img src="C:\Users\haris\Downloads\Land Rover Defender Hd Wallpaper.jpg" alt="Image 3"></div>
+			<div class="slide"><img src="C:\Users\haris\Downloads\RANGE ROVER.jpg" alt="Image 4"></div>
+			<div class="slide"><img src="C:\Users\haris\Downloads\Mercedes Benz AMG 4k wallpaper for mobile.jpg" alt="Image 5"></div>
+        </div>
+        <div class="nav-buttons">
+            <button id="prev">&#10094;</button>
+            <button id="next">&#10095;</button>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelector('.slides');
+        const slide = document.querySelectorAll('.slide');
+        let index = 0;
+
+        document.getElementById('next').addEventListener('click', () => {
+            index = (index + 1) % slide.length;
+            updateSlidePosition();
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            index = (index - 1 + slide.length) % slide.length;
+            updateSlidePosition();
+        });
+
+        function updateSlidePosition() {
+            slides.style.transform = `translateX(${-index * 100}%)`;
+        }
+
+        setInterval(() => {
+            index = (index + 1) % slide.length;
+            updateSlidePosition();
+        }, 3000);
+    </script>
+</body>
+</html>
+
+
