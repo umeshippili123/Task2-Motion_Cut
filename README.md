@@ -1,6 +1,5 @@
 Name : IPPILI UMESH
 Company: MotionCut
-
 Internship Details:
 ● Position: Web Development Intern
 ● Duration: 6 Weeks
